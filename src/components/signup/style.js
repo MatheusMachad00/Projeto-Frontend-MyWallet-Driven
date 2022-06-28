@@ -1,30 +1,28 @@
 import styled from 'styled-components'
 
-export const LoginScreen = styled.div`
+export const SignScreen = styled.div`
 display: flex;
 flex-direction: column;
-align-items: center;
 justify-content: center;
+align-items: center;
 
+  h1{
+    font-family: 'Saira Stencil One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 50px;
+    padding-top: 95px;
+    padding-bottom: 24px;
+    color: #FFFFFF;
+  }
 
-
-h1{
-  font-family: 'Saira Stencil One';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 32px;
-  line-height: 50px;
-  padding-top: 159px;
-  padding-bottom: 24px;
-  color: #FFFFFF;
-}
-
-form{
+  form{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
+  }
 
   input{
     margin-bottom: 13px;
@@ -50,7 +48,7 @@ form{
     padding-left: 16px;
   }
 
-button{
+  button{
     width: 326px;
     height: 58px;
     background: #A861D6;
@@ -66,13 +64,13 @@ button{
     align-items: center;
 }
 
-h2{
-  font-family: 'Raleway';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 15px;
-  line-height: 18px;
-  color: #FFFFFF;
-  padding-top: 36px;
-}
+  h2{
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 18px;
+    color: #FFFFFF;
+    padding-top: 36px;
+  }
 `
