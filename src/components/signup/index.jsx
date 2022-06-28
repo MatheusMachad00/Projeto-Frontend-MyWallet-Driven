@@ -8,15 +8,34 @@ export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [image, setImage] = useState("")
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  function submitData(event) {
+    event.preventDefault();
+    setLoading(true);
+    const LINK_API = "http://localhost:5000/sign-up";
+    const request = axios.post(LINK_API, {
+      name,
+      email,
+      password
+    });
+    request.then(response => {
+      navigate("/");
+      alert('Cadastrado com sucesso!');
+    });
+    request.catch(err => {
+      console.log(err.response);
+      setLoading(false);
+      alert("E-mail ja cadastrado. Tente novamente.");
+    });
+  }
 
   return (
     <SignScreen>
       <h1>MyWallet</h1>
 
-      <form /* onSubmit={submitData} */>
+      <form onSubmit={submitData}>
         <input
           type="text"
           disabled={loading ? true : false}
@@ -60,3 +79,6 @@ export default function Signup() {
     </SignScreen>
   );
 }
+
+/* ajuda para a validação de senha 
+https://www.itsolutionstuff.com/post/password-and-confirm-password-validation-in-reactexample.html */
