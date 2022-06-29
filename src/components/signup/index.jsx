@@ -7,6 +7,7 @@ import { SignScreen } from "./style"
 export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -14,6 +15,11 @@ export default function Signup() {
   function submitData(event) {
     event.preventDefault();
     setLoading(true);
+    if(password !== confirmPassword){
+      alert("Senhas digitadas não são iguais, digite novamente por favor.");
+      setLoading(false);
+      return;
+    }
     const LINK_API = "http://localhost:5000/sign-up";
     const request = axios.post(LINK_API, {
       name,
@@ -61,8 +67,8 @@ export default function Signup() {
           type="password"
           disabled={loading ? true : false}
           placeholder="Confirme sua senha"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)} />
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)} />
 
 
         <button type="submit">

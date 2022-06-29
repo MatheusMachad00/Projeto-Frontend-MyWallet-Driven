@@ -10,11 +10,35 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  function login(event) {
+    event.preventDefault();
+    setLoading(true);
+    const LINK_API = "http://localhost:5000/login";
+    const request = axios.post(LINK_API, {
+      email,
+      password
+    });
+    request.then(response => {
+      const { data } = response;
+      /* window.localStorage.clear();
+      setUserData(data);
+      console.log(data)
+      const stringifyData = JSON.stringify(data);
+      localStorage.setItem("userDataStorage", stringifyData); */
+      navigate("/home");
+    })
+    request.catch(err => {
+      console.log(err.response);
+      setLoading(false);
+      alert("E-mail ou senha incorretos. Tente novamente.");
+    });
+  }
+
   return (
     <LoginScreen>
       <h1>MyWallet</h1>
 
-      {<form /* onSubmit={login} */>
+      {<form onSubmit={login}>
         <input
           type="email"
           disabled={loading ? true : false}
