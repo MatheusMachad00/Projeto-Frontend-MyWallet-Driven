@@ -1,3 +1,7 @@
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { ThreeDots } from 'react-loader-spinner';
 import { Header, BankStatement, Footer, Hello, Nothing, PlusMinus } from "./style"
 
 import EXIT from "./../../assets/Vector.svg"
@@ -6,19 +10,51 @@ import MINUS from "./../../assets/ant-design_minus-circle-outlined.svg"
 import InOut from "../inOut"
 
 
-export default function Home() {
-  let test = false;
+export default function Home(userData) {
+  const [userActivity, setUserActivity] = useState(false);
+
+  console.log(userData.userData)
+
+  useEffect(() => {
+    let TOKEN = userData.userData;
+
+    const config = {
+        headers: {
+            Authorization: `Bearer ${TOKEN}`
+        }
+    };
+
+    const LINK_API = "http://localhost:5000/activity";
+    const request = axios.get(LINK_API, config);
+    request.then(response => {
+        const { data } = response;
+        setUserActivity(data);
+        console.log(data)
+    });
+    request.catch(err => {
+        window.location.reload()
+        console.log(err.response)
+    });
+}, []);
 
   return (
     <>
       <Header>
-        <Hello>Olá, Fulano</Hello>
+        {!userActivity ? <Hello>carregando...</Hello> : <Hello>Olá, {userActivity.name}</Hello>}
         <img src={EXIT} alt="exit button" />
       </Header>
 
       <BankStatement>
-        {test ? <Nothing>Não há registros de<br></br> entrada ou saída</Nothing> :
-      <InOut />}
+        {!userActivity ? <Nothing>Não há registros de<br></br> entrada ou saída</Nothing> :
+      userActivity.activity.map(({value, description, type, date}, index) =>(
+        <InOut 
+        value={value}
+        description={description}
+        type={type}
+        date={date}
+        id={index}
+        />)) }
+        <InOut />
         
       </BankStatement>
 
@@ -38,3 +74,4 @@ export default function Home() {
     </>
   );
 }
+

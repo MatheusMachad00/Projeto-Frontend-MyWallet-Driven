@@ -1,28 +1,25 @@
 import { Main, InsOuts, InAndOut, Span, Footer } from "./style"
 
-export default function InOut() {
+export default function InOut({value, description, type, date, index}) {
 
   return (
     <Main>
       <InsOuts>
         <Span>
           <div>
-            <h1>30/01</h1>
-            <h1>07/09</h1>
-            <h1>06/10</h1>
+            {/* <h1>{date}</h1> */}
+            <h1>20/07</h1>
           </div>
 
           <div>
-            <h2>Almoço</h2>
-            <h2>Presente</h2>
-            <h2>Mangá</h2>
+            {/* <h2>{description}</h2> */}
+            <h2>teste</h2>
           </div>
         </Span>
 
         <InAndOut>
-          <h1>31,90</h1>
-          <h1>40,78</h1>
-          <h1>23,90</h1>
+          {/* <h1>{value}</h1> */}
+          <h1>50.9</h1>
         </InAndOut>
         
       </InsOuts>

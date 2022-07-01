@@ -4,7 +4,7 @@ import axios from "axios";
 import { ThreeDots } from 'react-loader-spinner';
 import { LoginScreen } from "./style"
 
-export default function Login() {
+export default function Login({setUserData}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -20,8 +20,8 @@ export default function Login() {
     });
     request.then(response => {
       const { data } = response;
-      /* window.localStorage.clear();
       setUserData(data);
+      /* window.localStorage.clear();
       console.log(data)
       const stringifyData = JSON.stringify(data);
       localStorage.setItem("userDataStorage", stringifyData); */
