@@ -20,8 +20,8 @@ function App() {
           <Route path="/" element={<Login setUserData={setUserData}/>} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/home" element={<Home userData={userData}/>} />
-          <Route path="/plus" element={<TransactionPlus />} />
-          <Route path="/minus" element={<TransactionMinus />} />
+          <Route path="/plus" element={<TransactionPlus userData={userData}/>} />
+          <Route path="/minus" element={<TransactionMinus userData={userData}/>} />
         </Routes>
       </BrowserRouter>
     </UserContext.Provider>

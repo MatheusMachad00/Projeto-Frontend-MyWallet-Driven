@@ -7,19 +7,19 @@ export default function InOut({value, description, type, date, index}) {
       <InsOuts>
         <Span>
           <div>
-            {/* <h1>{date}</h1> */}
-            <h1>20/07</h1>
+            <h1>{date}</h1>
+            {/* <h1>20/07</h1> */}
           </div>
 
           <div>
-            {/* <h2>{description}</h2> */}
-            <h2>teste</h2>
+            <h2>{description}</h2>
+            {/* <h2>teste</h2> */}
           </div>
         </Span>
 
         <InAndOut>
-          {/* <h1>{value}</h1> */}
-          <h1>50.9</h1>
+          <h1>{value}</h1>
+          {/* <h1>50.9</h1> */}
         </InAndOut>
         
       </InsOuts>

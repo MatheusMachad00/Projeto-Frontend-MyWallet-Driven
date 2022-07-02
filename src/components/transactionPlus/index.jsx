@@ -4,15 +4,42 @@ import axios from "axios";
 import { ThreeDots } from 'react-loader-spinner';
 import { Header, Forms } from "./style"
 
-export default function TransactionPlus() {
+export default function TransactionPlus({ userData }) {
   const [transactionValue, setTransactionValue] = useState("");
   const [description, setDescription] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  function sendTrasaction(event) {
+    event.preventDefault();
+    setLoading(true);
+    let TOKEN = userData;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${TOKEN}`
+      }
+    };
+    const LINK_API = "http://localhost:5000/in";
+    const request = axios.post(LINK_API, {
+      value: transactionValue,
+      description
+    }, config);
+    request.then(response => {
+      const { data } = response;
+      navigate("/home");
+    })
+    request.catch(err => {
+      console.log(err.response);
+      setLoading(false);
+      alert("E-mail ou senha incorretos. Tente novamente.");
+    });
+  }
+
   return (
     <>
       <Header>Nova entrada</Header>
 
-      <Forms >
+      <Forms onSubmit={sendTrasaction}>
         <input
           type="number"
           disabled={loading ? true : false}

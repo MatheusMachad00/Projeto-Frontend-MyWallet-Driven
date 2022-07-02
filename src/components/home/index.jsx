@@ -19,23 +19,23 @@ export default function Home(userData) {
     let TOKEN = userData.userData;
 
     const config = {
-        headers: {
-            Authorization: `Bearer ${TOKEN}`
-        }
+      headers: {
+        Authorization: `Bearer ${TOKEN}`
+      }
     };
 
     const LINK_API = "http://localhost:5000/activity";
     const request = axios.get(LINK_API, config);
     request.then(response => {
-        const { data } = response;
-        setUserActivity(data);
-        console.log(data)
+      const { data } = response;
+      setUserActivity(data);
+      console.log(data)
     });
     request.catch(err => {
-        window.location.reload()
-        console.log(err.response)
+      window.location.reload()
+      console.log(err.response)
     });
-}, []);
+  }, []);
 
   return (
     <>
@@ -45,7 +45,7 @@ export default function Home(userData) {
       </Header>
 
       <BankStatement>
-        {!userActivity ? <Nothing>Não há registros de<br></br> entrada ou saída</Nothing> :
+        {/* {!userActivity ? <Nothing>Não há registros de<br></br> entrada ou saída</Nothing> :
       userActivity.activity.map(({value, description, type, date}, index) =>(
         <InOut 
         value={value}
@@ -53,22 +53,25 @@ export default function Home(userData) {
         type={type}
         date={date}
         id={index}
-        />)) }
+        />)) } */}
         <InOut />
-        
+
       </BankStatement>
 
       <Footer>
+        <Link to={"/plus"}>
+          <div className="plus">
+            <img src={PLUS} alt="plus button" />
+            <PlusMinus>Nova<br></br>entrada</PlusMinus>
+          </div>
+        </Link>
 
-        <div className="plus">
-        <img src={PLUS} alt="plus button" />
-        <PlusMinus>Nova<br></br>entrada</PlusMinus>
-        </div>
-
-        <div>
-        <img src={MINUS} alt="minus button" />
-        <PlusMinus>Nova<br></br>saída</PlusMinus>
-        </div>
+        <Link to={"/minus"}>
+          <div>
+            <img src={MINUS} alt="minus button" />
+            <PlusMinus>Nova<br></br>saída</PlusMinus>
+          </div>
+        </Link>
 
       </Footer>
     </>
