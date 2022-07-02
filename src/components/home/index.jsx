@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { ThreeDots } from 'react-loader-spinner';
-import { Header, BankStatement, Footer, Hello, Nothing, PlusMinus } from "./style"
+import { Header, BankStatement, Footer, Hello, Nothing, PlusMinus, Box, Balance } from "./style"
 
 import EXIT from "./../../assets/Vector.svg"
 import PLUS from "./../../assets/ant-design_plus-circle-outlined.svg"
@@ -45,17 +45,24 @@ export default function Home(userData) {
       </Header>
 
       <BankStatement>
-        {/* {!userActivity ? <Nothing>Não há registros de<br></br> entrada ou saída</Nothing> :
-      userActivity.activity.map(({value, description, type, date}, index) =>(
-        <InOut 
-        value={value}
-        description={description}
-        type={type}
-        date={date}
-        id={index}
-        />)) } */}
-        <InOut />
+        {!userActivity ? <Nothing>Não há registros de<br></br> entrada ou saída</Nothing> :
+          userActivity.activity.map(({ value, description, type, date }, index) => (
+            <Box>
+              <InOut
+                value={value}
+                description={description}
+                type={type}
+                date={date}
+                id={index}
+              />
+            </Box>))}
 
+            {!userActivity ? "" : 
+            <Balance>
+              <h1>SALDO</h1>
+              <h2>{50.90}</h2>
+            </Balance>
+            }
       </BankStatement>
 
       <Footer>
@@ -77,4 +84,3 @@ export default function Home(userData) {
     </>
   );
 }
-

@@ -20,9 +20,10 @@ height: 446px;
 margin: 0 24px 0;
 background-color: #FFFFFF;
 display: flex;
-justify-content: center;
-align-items: center;
+
 border-radius: 5px;
+display: flex;
+flex-direction: column;
 `
 export const Nothing = styled.h1`
   font-family: 'Raleway';
@@ -32,6 +33,7 @@ export const Nothing = styled.h1`
   line-height: 23px;
   text-align: center;
   color: #868686;
+  padding: 200px 73px ;
 `
 
 export const Footer = styled.footer`
@@ -66,4 +68,33 @@ export const PlusMinus = styled.h1`
   font-size: 17px;
   line-height: 20px;
   color: #FFFFFF;
+`
+
+export const Box = styled.div`
+width: 100%;
+`
+
+export const Balance = styled.div`
+display: flex;
+justify-content: space-between;
+padding: 0 15px 0 15px;
+margin-top: 240px;
+
+h1{
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 20px;
+  color: #000000;
+}
+
+h2{
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 20px;
+  color: #03AC00;
+}
 `
