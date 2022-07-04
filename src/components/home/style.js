@@ -109,4 +109,12 @@ h2{
   color: #03AC00;
   margin-left: 185px;
 }
+
+.red{
+color: #C70000;
+}
+
+.green{
+  color: #03AC00;
+}
 `

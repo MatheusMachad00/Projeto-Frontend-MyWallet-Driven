@@ -12,9 +12,7 @@ import InOut from "../inOut"
 
 export default function Home(userData) {
   const [userActivity, setUserActivity] = useState(false);
-
-  console.log(userData.userData)
-
+  const [transactions, setTransactions] = useState([]);
   useEffect(() => {
     let TOKEN = userData.userData;
 
@@ -29,6 +27,7 @@ export default function Home(userData) {
     request.then(response => {
       const { data } = response;
       setUserActivity(data);
+      if(data.activity !== undefined) return setTransactions(data.activity);
       console.log(data)
     });
     request.catch(err => {
@@ -37,15 +36,33 @@ export default function Home(userData) {
     });
   }, []);
 
+  function sum() {
+    if(transactions.length > 0) {
+      return transactions.reduce((previous, current) => {
+        if(current.type === "in") {
+          return previous + current.value;
+        }
+
+        return previous - current.value;
+      }, 0)
+    } else {
+      return 0;
+    }
+  }
+
+const totalSum = sum();
+
   return (
     <>
       <Header>
         {!userActivity ? <Hello>carregando...</Hello> : <Hello>Olá, {userActivity.name}</Hello>}
+        <Link to={"/"}>
         <img src={EXIT} alt="exit button" />
+        </Link>
       </Header>
 
       <BankStatement>
-        {!userActivity ? <Nothing>Não há registros de<br></br> entrada ou saída</Nothing> :
+        {!userActivity.activity ? <Nothing>Não há registros de<br></br> entrada ou saída</Nothing> :
           userActivity.activity.map(({ value, description, type, date }, index) => (
             <Box>
               <InOut
@@ -57,13 +74,12 @@ export default function Home(userData) {
               />
             </Box>))}
 
-            
       </BankStatement>
 
-      {!userActivity ? "" : 
+      {transactions.length === 0 ? "" : 
             <Balance>
               <h1>SALDO</h1>
-              <h2>{5000.90}</h2>
+              <h2 className={totalSum > 0 ? "green" : "red"}>{parseFloat(totalSum).toFixed(2)}</h2>
             </Balance>
             }
 
