@@ -4,6 +4,7 @@ export const Header = styled.header`
 display: flex;
 padding: 24px 24px 22px;
 justify-content: space-between;
+
 `
 
 export const Hello = styled.h1`
@@ -16,14 +17,16 @@ font-family: 'Raleway';
 `
 
 export const BankStatement = styled.main`
-height: 446px;
+height: 390px;
 margin: 0 24px 0;
 background-color: #FFFFFF;
 display: flex;
-
-border-radius: 5px;
+/* background-color: red; */
+position: relative;
+border-radius: 5px 5px 1px 1px;
 display: flex;
 flex-direction: column;
+overflow-y: auto;
 `
 export const Nothing = styled.h1`
   font-family: 'Raleway';
@@ -38,7 +41,8 @@ export const Nothing = styled.h1`
 
 export const Footer = styled.footer`
 display: flex;
-padding: 13px 25px 16px;
+padding: 42px 25px 16px;
+margin-top: 15px;
 
 div{
   width: 155px;
@@ -75,10 +79,17 @@ width: 100%;
 `
 
 export const Balance = styled.div`
+width: 325.5px;
 display: flex;
 justify-content: space-between;
-padding: 0 15px 0 15px;
-margin-top: 240px;
+padding: 10px 15px 10px 15px;
+border-radius: 0px 0px 5px 5px;
+position: fixed;
+bottom: 160px;
+left: 25px;
+z-index: 50;
+background-color: #FFFFFF;
+
 
 h1{
   font-family: 'Raleway';
@@ -96,5 +107,6 @@ h2{
   font-size: 17px;
   line-height: 20px;
   color: #03AC00;
+  margin-left: 185px;
 }
 `

@@ -21,7 +21,7 @@ export default function TransactionPlus({ userData }) {
     };
     const LINK_API = "http://localhost:5000/in";
     const request = axios.post(LINK_API, {
-      value: transactionValue,
+      value: parseFloat(transactionValue.replace(",", ".")),
       description
     }, config);
     request.then(response => {
@@ -41,7 +41,7 @@ export default function TransactionPlus({ userData }) {
 
       <Forms onSubmit={sendTrasaction}>
         <input
-          type="number"
+          type="string"
           disabled={loading ? true : false}
           placeholder="Valor"
           value={transactionValue}

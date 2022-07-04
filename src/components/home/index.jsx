@@ -57,13 +57,15 @@ export default function Home(userData) {
               />
             </Box>))}
 
-            {!userActivity ? "" : 
+            
+      </BankStatement>
+
+      {!userActivity ? "" : 
             <Balance>
               <h1>SALDO</h1>
-              <h2>{50.90}</h2>
+              <h2>{5000.90}</h2>
             </Balance>
             }
-      </BankStatement>
 
       <Footer>
         <Link to={"/plus"}>
