@@ -22,7 +22,7 @@ export default function Home(userData) {
       }
     };
 
-    const LINK_API = "http://localhost:5000/activity";
+    const LINK_API = "https://apimywalletdriven.herokuapp.com/activity";
     const request = axios.get(LINK_API, config);
     request.then(response => {
       const { data } = response;

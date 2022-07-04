@@ -20,7 +20,7 @@ export default function Signup() {
       setLoading(false);
       return;
     }
-    const LINK_API = "http://localhost:5000/sign-up";
+    const LINK_API = "https://apimywalletdriven.herokuapp.com/sign-up";
     const request = axios.post(LINK_API, {
       name,
       email,

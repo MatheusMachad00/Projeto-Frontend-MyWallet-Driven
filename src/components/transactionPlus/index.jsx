@@ -19,7 +19,7 @@ export default function TransactionPlus({ userData }) {
         Authorization: `Bearer ${TOKEN}`
       }
     };
-    const LINK_API = "http://localhost:5000/in";
+    const LINK_API = "https://apimywalletdriven.herokuapp.com/in";
     const request = axios.post(LINK_API, {
       value: parseFloat(transactionValue.replace(",", ".")),
       description
